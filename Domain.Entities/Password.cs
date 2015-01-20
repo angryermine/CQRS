@@ -12,7 +12,12 @@ namespace Domain.Entities
         private const int SaltIndex = 1;
         private const int PBKDF2Index = 2;
 
+        protected Password()
+        {
+        }
+
         public Password(string password)
+            : this()
         {
             Hash = HashPassword(password);
         }

@@ -4,7 +4,12 @@ namespace Domain.Entities
 {
     public class Account : Entity
     {
+        protected Account()
+        {
+        }
+
         public Account(string email, string password)
+            : this()
         {
             ChangeEmail(email);
             ChangePassword(password);

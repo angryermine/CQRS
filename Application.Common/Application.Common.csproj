@@ -46,16 +46,6 @@
     <Compile Include="Queries\IQuery.cs" />
     <Compile Include="Queries\QueryDispatcher.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain.Common\Domain.Common.csproj">
-      <Project>{01AAB258-A757-486F-B24F-3F804C3A9FA7}</Project>
-      <Name>Domain.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj">
-      <Project>{F7957F37-DAFB-462F-8509-F5C2659E5EC9}</Project>
-      <Name>Domain.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
