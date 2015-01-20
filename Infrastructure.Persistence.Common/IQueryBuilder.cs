@@ -12,7 +12,7 @@ namespace Infrastructure.Persistence.Common
         IQueryBuilder<TEntity> OrderByAsc(Expression<Func<TEntity, object>> path);
         IQueryBuilder<TEntity> OrderByDesc(Expression<Func<TEntity, object>> path);
         IQueryBuilder<TEntity> Paged(int page, int pageSize);
-        TEntity FirstOrDefault();
+        TEntity First();
         List<TEntity> ToList();
         int Count();
     }
