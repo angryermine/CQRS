@@ -1,6 +1,4 @@
-﻿using Domain.Common.Specifications;
-
-namespace Domain.Specifications.Account
+﻿namespace Domain.Specifications.Account
 {
     public class AccountSpecification : FluentSpecification<Entities.Account>
     {
