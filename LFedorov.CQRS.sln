@@ -19,6 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Specifications", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence.Common", "Infrastructure.Persistence.Common\Infrastructure.Persistence.Common.csproj", "{F8906233-42BB-4246-A366-12265B78298E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Common", "Application.Common\Application.Common.csproj", "{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Commands", "Application.Commands\Application.Commands.csproj", "{EDD66852-C99B-4152-A392-821F7453F62E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence.NHibernate", "Infrastructure.Persistence.NHibernate\Infrastructure.Persistence.NHibernate.csproj", "{E7DBD959-900F-44EE-B481-23B44EFDA79D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +47,18 @@ Global
 		{F8906233-42BB-4246-A366-12265B78298E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8906233-42BB-4246-A366-12265B78298E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8906233-42BB-4246-A366-12265B78298E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD66852-C99B-4152-A392-821F7453F62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD66852-C99B-4152-A392-821F7453F62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD66852-C99B-4152-A392-821F7453F62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD66852-C99B-4152-A392-821F7453F62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7DBD959-900F-44EE-B481-23B44EFDA79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7DBD959-900F-44EE-B481-23B44EFDA79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7DBD959-900F-44EE-B481-23B44EFDA79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7DBD959-900F-44EE-B481-23B44EFDA79D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

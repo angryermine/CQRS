@@ -6,6 +6,5 @@ namespace Infrastructure.Persistence.Common
     {
         void Commit();
         void Rollback();
-
     }
 }
