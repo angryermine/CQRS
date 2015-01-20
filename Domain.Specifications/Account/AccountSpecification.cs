@@ -2,6 +2,12 @@
 {
     public class AccountSpecification : FluentSpecification<Entities.Account>
     {
+        public AccountSpecification WithId(int id)
+        {
+            IncludeSpecification(new IdEqualsSpecification(id));
+            return this;
+        }
+
         public AccountSpecification WithEmail(string email)
         {
             IncludeSpecification(new EmailEqualsSpecification(email));

@@ -34,7 +34,31 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\AccountByIdQuery.cs" />
+    <Compile Include="Accounts\AccountByIdContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj">
+      <Project>{29B8EFA3-1199-4CED-B135-D9CDD917A2DC}</Project>
+      <Name>Application.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Common\Domain.Common.csproj">
+      <Project>{01aab258-a757-486f-b24f-3f804c3a9fa7}</Project>
+      <Name>Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj">
+      <Project>{f7957f37-dafb-462f-8509-f5c2659e5ec9}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Specifications\Domain.Specifications.csproj">
+      <Project>{56EFC4C3-339D-4D78-85FB-A21354FCF9BA}</Project>
+      <Name>Domain.Specifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Persistence.Common\Infrastructure.Persistence.Common.csproj">
+      <Project>{F8906233-42BB-4246-A366-12265B78298E}</Project>
+      <Name>Infrastructure.Persistence.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
