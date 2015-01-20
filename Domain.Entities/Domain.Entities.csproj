@@ -36,16 +36,10 @@
     <Compile Include="Account.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Entity.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Password.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specification.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain.Common\Domain.Common.csproj">
