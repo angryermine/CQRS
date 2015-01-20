@@ -1,6 +1,6 @@
 namespace Application.Common.Queries
 {
-    public interface IQueryContext
+    public interface IQueryContext<out TResult>
     {
     }
 }

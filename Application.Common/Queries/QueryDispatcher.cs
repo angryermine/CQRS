@@ -9,9 +9,9 @@ namespace Application.Common.Queries
             _queryFactory = queryFactory;
         }
 
-        public TResult Ask<TContext, TResult>(TContext context) where TContext : IQueryContext
+        public TResult Ask<TResult>(IQueryContext<TResult> context)
         {
-            return _queryFactory.Create<TContext, TResult>().Execute(context);
+            return _queryFactory.Create<IQueryContext<TResult>, TResult>().Execute(context);
         }
     }
 }
