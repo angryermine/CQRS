@@ -39,6 +39,7 @@
     </Compile>
     <Compile Include="Account\EmailEqualsSpecification.cs" />
     <Compile Include="Account\PasswordEqualsSpecification.cs" />
+    <Compile Include="FluentSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
