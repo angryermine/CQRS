@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Application.Common.Commands;
 using Application.Common.Queries;
+using Application.Queries.AccountQueries;
 
 namespace Presentation.Web.Controllers
 {
@@ -17,7 +18,12 @@ namespace Presentation.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var vm = new HomeIndexViewModel()
+            {
+                Total = _queryDispatcher.Ask(new AccountTotalCountQuery())
+            };
+
+            return View(vm);
         }
 
         public ActionResult About()
@@ -33,5 +39,10 @@ namespace Presentation.Web.Controllers
 
             return View();
         }
+    }
+
+    public class HomeIndexViewModel
+    {
+        public int Total { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 namespace Application.Common.Queries
 {
-    public interface IQueryHandler<in TContext, out TResult> where TContext : IQuery<TResult>
+    public interface IQueryHandler<in TQuery, out TResult> where TQuery : IQuery<TResult>
     {
-        TResult Execute(TContext context);
+        TResult Execute(TQuery context);
     }
 }

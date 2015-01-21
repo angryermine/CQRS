@@ -1,7 +1,6 @@
 namespace Application.Common.Commands
 {
-    public interface ICommand<in TContext> where TContext : ICommandContext
+    public interface ICommand
     {
-        void Execute(TContext context);
     }
 }

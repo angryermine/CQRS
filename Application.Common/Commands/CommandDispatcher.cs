@@ -1,17 +1,20 @@
+using System;
+
 namespace Application.Common.Commands
 {
     public class CommandDispatcher : ICommandDispatcher
     {
-        private readonly ICommandFactory _commandFactory;
+        private readonly Func<Type, object> _resolveCallback;
 
-        public CommandDispatcher(ICommandFactory commandFactory)
+        public CommandDispatcher(Func<Type, object> resolveCallback)
         {
-            _commandFactory = commandFactory;
+            _resolveCallback = resolveCallback;
         }
 
-        public void Send<TContext>(TContext context) where TContext : ICommandContext
+        public void Send<TCommand>(TCommand command) where TCommand : ICommand
         {
-            _commandFactory.Create<TContext>().Execute(context);
+            var handler = (ICommandHandler<TCommand>)_resolveCallback(typeof(ICommandHandler<TCommand>));
+            handler.Execute(command);
         }
     }
 }

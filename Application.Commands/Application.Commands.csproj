@@ -34,7 +34,27 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountCommands\CreateAccountCommand.cs" />
+    <Compile Include="AccountCommands\CreateAccountCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Common\Application.Common.csproj">
+      <Project>{29b8efa3-1199-4ced-b135-d9cdd917a2dc}</Project>
+      <Name>Application.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Common\Domain.Common.csproj">
+      <Project>{01AAB258-A757-486F-B24F-3F804C3A9FA7}</Project>
+      <Name>Domain.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj">
+      <Project>{F7957F37-DAFB-462F-8509-F5C2659E5EC9}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Persistence.Common\Infrastructure.Persistence.Common.csproj">
+      <Project>{F8906233-42BB-4246-A366-12265B78298E}</Project>
+      <Name>Infrastructure.Persistence.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
