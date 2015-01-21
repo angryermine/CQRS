@@ -1,7 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
+using Application.Commands.AccountCommands;
 using Application.Common.Commands;
 using Application.Common.Queries;
 using Application.Queries.AccountQueries;
+using Presentation.Web.Models;
 
 namespace Presentation.Web.Controllers
 {
@@ -9,6 +13,7 @@ namespace Presentation.Web.Controllers
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
+        private static readonly Random _random = new Random();
 
         public HomeController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
@@ -16,33 +21,32 @@ namespace Presentation.Web.Controllers
             _queryDispatcher = queryDispatcher;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var vm = new HomeIndexViewModel()
+            var totalAccounts = _queryDispatcher.Ask(new AccountTotalCountQuery());
+
+            if (totalAccounts == 0)
             {
-                Total = _queryDispatcher.Ask(new AccountTotalCountQuery())
+                for (var i = 1; i <= 10; i++)
+                {
+                    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+                    var email = string.Format("user_{0}@example.com", i);
+                    var password = new string(Enumerable.Repeat(chars, 8).Select(s => s[_random.Next(s.Length)]).ToArray());
+
+                    _commandDispatcher.Send(new CreateAccountCommand(email, password));
+                }
+
+                totalAccounts = _queryDispatcher.Ask(new AccountTotalCountQuery());
+            }
+
+            var vm = new HomeIndexViewModel
+            {
+                Total = totalAccounts,
+                Accounts =  _queryDispatcher.Ask(new AccountsPagedQuery(page, 10))
             };
 
             return View(vm);
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-    }
-
-    public class HomeIndexViewModel
-    {
-        public int Total { get; set; }
     }
 }

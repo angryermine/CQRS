@@ -1,5 +1,5 @@
 # LFedorov.CQRS
-Simple CQRS implementation on .NET
+Simple CQRS(without ES) implementation on .NET
 
 ORM: NHibernate
 

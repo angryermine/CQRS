@@ -5,8 +5,8 @@ namespace Domain.Entities
 {
     public class Password
     {
-        private const int SaltByteSize = 24;
-        private const int HashByteSize = 20;
+        private const int SaltByteSize = 32;
+        private const int HashByteSize = 64;
         private const int PBKDF2Iterations = 10000;
         private const int IterationIndex = 0;
         private const int SaltIndex = 1;
