@@ -1,7 +1,6 @@
 namespace Application.Common.Queries
 {
-    public interface IQuery<in TContext, out TResult>
+    public interface IQuery<TResult>
     {
-        TResult Execute(TContext context);
     }
 }
