@@ -4,16 +4,16 @@ namespace Application.Common.Commands
 {
     public class CommandDispatcher : ICommandDispatcher
     {
-        private readonly Func<Type, object> _resolveCallback;
+        private readonly Func<Type, object> _resolver;
 
-        public CommandDispatcher(Func<Type, object> resolveCallback)
+        public CommandDispatcher(Func<Type, object> resolver)
         {
-            _resolveCallback = resolveCallback;
+            _resolver = resolver;
         }
 
         public void Send<TCommand>(TCommand command) where TCommand : ICommand
         {
-            var handler = (ICommandHandler<TCommand>)_resolveCallback(typeof(ICommandHandler<TCommand>));
+            var handler = (ICommandHandler<TCommand>) _resolver(typeof(ICommandHandler<TCommand>));
             handler.Execute(command);
         }
     }

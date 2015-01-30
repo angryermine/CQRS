@@ -4,18 +4,17 @@ namespace Application.Common.Queries
 {
     public class QueryDispatcher : IQueryDispatcher
     {
-        private readonly Func<Type, object> _resolveCallback;
+        private readonly Func<Type, object> _resolver;
 
-        public QueryDispatcher(Func<Type, object> resolveCallback)
+        public QueryDispatcher(Func<Type, object> resolver)
         {
-            _resolveCallback = resolveCallback;
+            _resolver = resolver;
         }
 
         public TResult Ask<TResult>(IQuery<TResult> query)
         {
             var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
-            var handler = _resolveCallback(handlerType);
-            return (TResult)((dynamic)handler).Execute((dynamic)query);
+            return (TResult)((dynamic) _resolver(handlerType)).Execute((dynamic)query);
         }
     }
 }
