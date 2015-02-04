@@ -7,9 +7,9 @@ namespace Application.Queries.AccountQueries
 {
     public class AccountsPagedQueryHandler : IQueryHandler<AccountsPagedQuery, IEnumerable<Account>>
     {
-        private readonly IRepository _repository;
+        private readonly IRepository<Account> _repository;
 
-        public AccountsPagedQueryHandler(IRepository repository)
+        public AccountsPagedQueryHandler(IRepository<Account> repository)
         {
             _repository = repository;
         }
@@ -17,7 +17,6 @@ namespace Application.Queries.AccountQueries
         public IEnumerable<Account> Execute(AccountsPagedQuery context)
         {
             return _repository
-                .Query<Account>()
                 .Paged(context.CurrentPage, context.PageSize)
                 .ToList();
         }

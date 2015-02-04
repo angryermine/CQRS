@@ -27,9 +27,9 @@ namespace Presentation.Web
 
             var container = new Container();
             container.Register(config.BuildSessionFactory, new WebRequestLifestyle());
-            container.Register<ISession>(() => container.GetInstance<ISessionFactory>().OpenSession(), new WebRequestLifestyle());
-            container.Register<IRepository, Repository>();
+            container.Register(() => container.GetInstance<ISessionFactory>().OpenSession(), new WebRequestLifestyle());
             container.Register<IUnitOfWorkFactory, UnitOfWorkFactory>();
+            container.RegisterOpenGeneric(typeof(IRepository<>), typeof(Repository<>));
 
             container.RegisterManyForOpenGeneric(typeof(IQuery<>), Assembly.Load("Application.Queries"));
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), Assembly.Load("Application.Queries"));

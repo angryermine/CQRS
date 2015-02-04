@@ -6,9 +6,9 @@ namespace Application.Queries.AccountQueries
 {
     public class AccountTotalCountQueryHandler : IQueryHandler<AccountTotalCountQuery, int>
     {
-        private readonly IRepository _repository;
+        private readonly IRepository<Account> _repository;
 
-        public AccountTotalCountQueryHandler(IRepository repository)
+        public AccountTotalCountQueryHandler(IRepository<Account> repository)
         {
             _repository = repository;
         }
@@ -16,7 +16,6 @@ namespace Application.Queries.AccountQueries
         public int Execute(AccountTotalCountQuery context)
         {
             return _repository
-                .Query<Account>()
                 .Count();
         }
     }

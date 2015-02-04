@@ -1,4 +1,5 @@
 using System;
+using Domain.Common.Entities;
 using Infrastructure.Persistence.Common;
 using NHibernate;
 
@@ -13,6 +14,16 @@ namespace Infrastructure.Persistence.NHibernate
         {
             _session = session;
             _transaction = _session.BeginTransaction();
+        }
+
+        public void Add<TEntity>(TEntity entity) where TEntity : IEntity
+        {
+            _session.SaveOrUpdate(entity);
+        }
+
+        public void Delete<TEntity>(TEntity entity) where TEntity : IEntity
+        {
+            _session.Delete(entity);
         }
 
         public void Commit()
