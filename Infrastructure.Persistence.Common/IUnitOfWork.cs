@@ -1,5 +1,5 @@
 using System;
-using Domain.Common.Entities;
+using Domain.Common;
 
 namespace Infrastructure.Persistence.Common
 {

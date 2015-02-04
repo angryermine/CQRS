@@ -1,6 +1,6 @@
 using System;
 using System.Linq.Expressions;
-using Domain.Common.Specifications;
+using Domain.Common;
 
 namespace Domain.Specifications.Account
 {

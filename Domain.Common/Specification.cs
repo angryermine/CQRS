@@ -1,8 +1,7 @@
 using System;
 using System.Linq.Expressions;
-using Domain.Common.Entities;
 
-namespace Domain.Common.Specifications
+namespace Domain.Common
 {
     public abstract class Specification<TEntity> : ISpecification<TEntity> where TEntity : Entity
     {

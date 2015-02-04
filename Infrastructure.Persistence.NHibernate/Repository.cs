@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Domain.Common.Entities;
+using Domain.Common;
 using Infrastructure.Persistence.Common;
 using NHibernate;
 using NHibernate.Linq;

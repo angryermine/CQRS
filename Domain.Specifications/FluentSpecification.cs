@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Domain.Common.Entities;
-using Domain.Common.Specifications;
+using Domain.Common;
 
 namespace Domain.Specifications
 {

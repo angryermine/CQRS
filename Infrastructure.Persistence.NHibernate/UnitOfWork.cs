@@ -1,5 +1,5 @@
 using System;
-using Domain.Common.Entities;
+using Domain.Common;
 using Infrastructure.Persistence.Common;
 using NHibernate;
 
