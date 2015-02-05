@@ -3,7 +3,7 @@
     ViewBag.Title = "Accounts List";
 }
 <div class="row">
-    <div class="col-md-3 col-xs-6 info-box">
+    <div class="col-md-3 col-sm-6 col-xs-12 info-box">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h1 class="panel-title text-center">@Model.Total</h1>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-xs-6 info-box">
+    <div class="col-md-3 col-sm-6 col-xs-12 info-box">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h1 class="panel-title text-center">@Model.Today</h1>
@@ -23,13 +23,23 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-xs-6 info-box">
+    <div class="col-md-3 col-sm-6 col-xs-12 info-box">
         <div class="panel panel-warning">
             <div class="panel-heading">
                 <h1 class="panel-title text-center">@Model.Month</h1>
             </div>
             <div class="panel-body text-center">
                 <strong>Last Month Registered</strong>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 info-box">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h1 class="panel-title text-center">99999</h1>
+            </div>
+            <div class="panel-body text-center">
+                <strong>Reserved :)</strong>
             </div>
         </div>
     </div>
