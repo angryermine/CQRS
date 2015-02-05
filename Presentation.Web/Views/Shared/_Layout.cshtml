@@ -3,16 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/css/semantic.min.css" rel="stylesheet" />
+    <title>CQRS Sample: @ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-    <body>
-        <div class="ui centered grid">
-            <div class="eleven wide column">
-                @RenderBody()
-            </div>
-        </div>
-        <script src="~/Content/js/jquery-1.11.1.min.js"></script>
-        <script src="~/Content/js/semantic.min.js"></script>
-    </body>
+<body>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
 </html>

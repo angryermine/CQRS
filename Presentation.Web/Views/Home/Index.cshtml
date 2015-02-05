@@ -1,15 +1,14 @@
 ﻿@model Presentation.Web.Models.HomeIndexViewModel
 @{
-    ViewBag.Title = "Accounts";
+    ViewBag.Title = "Accounts List";
 }
 <h1>Total accounts : @Model.Total</h1>
-<div class="ui celled list">
+<table class="table table-bordered">
     @foreach (var account in Model.Accounts)
     {
-        <div class="item">
-            <div class="content">
-                <div class="header">@account.Email</div>
-            </div>
-        </div>
+        <tr>
+            <td>@account.Id</td>
+            <td>@account.Email</td>
+        </tr>
     }
-</div>
+</table>
