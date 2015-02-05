@@ -18,7 +18,7 @@ namespace Infrastructure.Persistence.NHibernate
             _session = session.Query<TEntity>();
         }
 
-        public IRepository<TEntity> Specification(Expression<Func<TEntity, bool>> predicate)
+        public IRepository<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
             if (predicate != null)
             {

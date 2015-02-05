@@ -34,10 +34,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountQueries\AccountMonthCountQuery.cs" />
+    <Compile Include="AccountQueries\AccountTodayCountQuery.cs" />
     <Compile Include="AccountQueries\AccountsPagedQuery.cs" />
-    <Compile Include="AccountQueries\AccountsPagedQueryHandler.cs" />
     <Compile Include="AccountQueries\AccountTotalCountQuery.cs" />
-    <Compile Include="AccountQueries\AccountTotalCountQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

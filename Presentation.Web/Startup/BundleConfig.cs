@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace Presentation.Web
+namespace Presentation.Web.Startup
 {
     public class BundleConfig
     {

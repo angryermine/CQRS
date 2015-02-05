@@ -1,4 +1,6 @@
-﻿namespace Domain.Specifications.Account
+﻿using System;
+
+namespace Domain.Specifications.Account
 {
     public class AccountSpecification : FluentSpecification<Entities.Account>
     {
@@ -17,6 +19,12 @@
         public AccountSpecification WithPassword(string password)
         {
             IncludeSpecification(new PasswordEqualsSpecification(password));
+            return this;
+        }
+
+        public AccountSpecification WithRegistrationDate(DateTime from, DateTime to)
+        {
+            IncludeSpecification(new RegistrationDateRange(from, to));
             return this;
         }
     }

@@ -13,7 +13,6 @@ namespace Presentation.Web.Controllers
     {
         private readonly ICommandDispatcher _commandDispatcher;
         private readonly IQueryDispatcher _queryDispatcher;
-        private static readonly Random _random = new Random();
 
         public HomeController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
@@ -24,26 +23,15 @@ namespace Presentation.Web.Controllers
         public ActionResult Index(int page = 1)
         {
             var totalAccounts = _queryDispatcher.Ask(new AccountTotalCountQuery());
-
-            if (totalAccounts == 0)
-            {
-                for (var i = 1; i <= 10; i++)
-                {
-                    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-                    var email = string.Format("user_{0}@example.com", i);
-                    var password = new string(Enumerable.Repeat(chars, 8).Select(s => s[_random.Next(s.Length)]).ToArray());
-
-                    _commandDispatcher.Send(new CreateAccountCommand(email, password));
-                }
-
-                totalAccounts = _queryDispatcher.Ask(new AccountTotalCountQuery());
-            }
+            var todayAccounts = _queryDispatcher.Ask(new AccountTodayCountQuery());
+            var monthAccounts = _queryDispatcher.Ask(new AccountMonthCountQuery());
 
             var vm = new HomeIndexViewModel
             {
                 Total = totalAccounts,
-                Accounts =  _queryDispatcher.Ask(new AccountsPagedQuery(page, 10))
+                Today = todayAccounts,
+                Month = monthAccounts,
+                Accounts =  _queryDispatcher.Ask(new AccountsPagedQuery(page, 20))
             };
 
             return View(vm);

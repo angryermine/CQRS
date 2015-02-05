@@ -40,6 +40,7 @@
     <Compile Include="Account\EmailEqualsSpecification.cs" />
     <Compile Include="Account\IdEqualsSpecification.cs" />
     <Compile Include="Account\PasswordEqualsSpecification.cs" />
+    <Compile Include="Account\RegistrationDateRange.cs" />
     <Compile Include="FluentSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

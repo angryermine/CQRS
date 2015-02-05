@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using System;
+using Domain.Common;
 
 namespace Domain.Entities
 {
@@ -6,6 +7,7 @@ namespace Domain.Entities
     {
         protected Account()
         {
+            RegistrationDate = DateTime.Now;
         }
 
         public Account(string email, string password)
@@ -17,6 +19,7 @@ namespace Domain.Entities
 
         public virtual string Email { get; protected set; }
         public virtual Password Password { get; protected set; }
+        public virtual DateTime RegistrationDate { get; protected set; }
 
         public virtual void ChangeEmail(string email)
         {

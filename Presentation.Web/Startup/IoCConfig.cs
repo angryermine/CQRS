@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using Application.Common.Commands;
@@ -14,7 +15,7 @@ using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 
-namespace Presentation.Web
+namespace Presentation.Web.Startup
 {
     public class IoCConfig
     {
@@ -31,7 +32,13 @@ namespace Presentation.Web
             container.Register<IUnitOfWorkFactory, UnitOfWorkFactory>();
             container.RegisterOpenGeneric(typeof(IRepository<>), typeof(Repository<>));
 
-            container.RegisterManyForOpenGeneric(typeof(IQuery<>), Assembly.Load("Application.Queries"));
+            var queries = OpenGenericBatchRegistrationExtensions.GetTypesToRegister(
+                container, typeof(IQuery<>),
+                AccessibilityOption.PublicTypesOnly,
+                Assembly.Load("Application.Queries"))
+                .ToList();
+
+            container.RegisterManyForOpenGeneric(typeof(IQuery<>), container.RegisterAll, queries);
             container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), Assembly.Load("Application.Queries"));
             container.Register<IQueryDispatcher>(() => new QueryDispatcher(container.GetInstance));
 

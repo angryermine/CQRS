@@ -11,6 +11,7 @@ namespace Infrastructure.Persistence.NHibernate.Mappings
             Id(x => x.Id);
             Map(x => x.Email);
             Component(x => x.Password);
+            Map(x => x.RegistrationDate);
         }
     }
 }

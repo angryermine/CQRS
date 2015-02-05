@@ -2,13 +2,55 @@
 @{
     ViewBag.Title = "Accounts List";
 }
-<h1>Total accounts : @Model.Total</h1>
+<div class="row">
+    <div class="col-md-3 col-xs-6 info-box">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h1 class="panel-title text-center">@Model.Total</h1>
+            </div>
+            <div class="panel-body text-center">
+                <strong>Total Accounts</strong>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-6 info-box">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h1 class="panel-title text-center">@Model.Today</h1>
+            </div>
+            <div class="panel-body text-center">
+                <strong>Today Registered</strong>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-6 info-box">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h1 class="panel-title text-center">@Model.Month</h1>
+            </div>
+            <div class="panel-body text-center">
+                <strong>Last Month Registered</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table class="table table-bordered">
-    @foreach (var account in Model.Accounts)
-    {
+    <thead>
         <tr>
-            <td>@account.Id</td>
-            <td>@account.Email</td>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Registration Date</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var account in Model.Accounts)
+        {
+            <tr>
+                <td>@account.Id</td>
+                <td>@account.Email</td>
+                <td>@account.RegistrationDate</td>
+            </tr>
+        }
+    </tbody>
 </table>
