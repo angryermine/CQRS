@@ -38,6 +38,7 @@
     <Compile Include="IEntity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISpecification.cs" />
     <Compile Include="Specification.cs" />
