@@ -19,16 +19,16 @@ namespace Application.Queries.AccountQueries
 
     public class AccountsPagedQueryHandler : IQueryHandler<AccountsPagedQuery, IEnumerable<Account>>
     {
-        private readonly IRepository<Account> _repository;
+        private readonly IRepository _repository;
 
-        public AccountsPagedQueryHandler(IRepository<Account> repository)
+        public AccountsPagedQueryHandler(IRepository repository)
         {
             _repository = repository;
         }
 
         public IEnumerable<Account> Execute(AccountsPagedQuery context)
         {
-            return _repository
+            return _repository.Query<Account>()
                 .Paged(context.CurrentPage, context.PageSize)
                 .ToList();
         }

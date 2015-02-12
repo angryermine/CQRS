@@ -12,9 +12,9 @@ namespace Application.Queries.AccountQueries
 
     public class AccountTodayCountQueryHandler : IQueryHandler<AccountTodayCountQuery, int>
     {
-        private readonly IRepository<Account> _repository;
+        private readonly IRepository _repository;
 
-        public AccountTodayCountQueryHandler(IRepository<Account> repository)
+        public AccountTodayCountQueryHandler(IRepository repository)
         {
             _repository = repository;
         }
@@ -24,7 +24,7 @@ namespace Application.Queries.AccountQueries
             var spec = new AccountSpecification()
                 .WithRegistrationDate(DateTime.Now.Date, DateTime.Now.Date);
 
-            return _repository
+            return _repository.Query<Account>()
                 .Where(spec.AsExpression())
                 .Count();
         }

@@ -23,14 +23,14 @@ namespace Presentation.Web.Startup
         {
             var database = MsSqlConfiguration.MsSql2008.ConnectionString(x => x.FromConnectionStringWithKey("Main"));
             var config = Fluently.Configure().Database(database)
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<AccountMap>())
+                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.Load("Infrastructure.NHibernate")))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 
             var container = new Container();
             container.Register(config.BuildSessionFactory, new WebRequestLifestyle());
             container.Register(() => container.GetInstance<ISessionFactory>().OpenSession(), new WebRequestLifestyle());
             container.Register<IUnitOfWorkFactory, UnitOfWorkFactory>();
-            container.RegisterOpenGeneric(typeof(IRepository<>), typeof(Repository<>));
+            container.Register<IRepository, Repository>();
 
             var queries = OpenGenericBatchRegistrationExtensions.GetTypesToRegister(
                 container, typeof(IQuery<>),

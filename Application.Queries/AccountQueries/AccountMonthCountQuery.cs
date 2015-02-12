@@ -12,9 +12,9 @@ namespace Application.Queries.AccountQueries
 
     public class AccountMonthCountQueryHandler : IQueryHandler<AccountMonthCountQuery, int>
     {
-        private readonly IRepository<Account> _repository;
+        private readonly IRepository _repository;
 
-        public AccountMonthCountQueryHandler(IRepository<Account> repository)
+        public AccountMonthCountQueryHandler(IRepository repository)
         {
             _repository = repository;
         }
@@ -24,7 +24,7 @@ namespace Application.Queries.AccountQueries
             var spec = new AccountSpecification()
                 .WithRegistrationDate(DateTime.Now.Date.AddMonths(-1), DateTime.Now.Date);
 
-            return _repository
+            return _repository.Query<Account>()
                 .Where(spec.AsExpression())
                 .Count();
         }
