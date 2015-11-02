@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using Application.Common.Commands;
@@ -7,11 +6,9 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Infrastructure.Persistence.Common;
 using Infrastructure.Persistence.NHibernate;
-using Infrastructure.Persistence.NHibernate.Mappings;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using SimpleInjector;
-using SimpleInjector.Extensions;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 

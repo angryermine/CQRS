@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountQueries\AccountByIdQuery.cs" />
     <Compile Include="AccountQueries\AccountMonthCountQuery.cs" />
     <Compile Include="AccountQueries\AccountTodayCountQuery.cs" />
     <Compile Include="AccountQueries\AccountsPagedQuery.cs" />

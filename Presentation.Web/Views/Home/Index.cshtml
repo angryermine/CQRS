@@ -39,7 +39,7 @@
                 <h1 class="panel-title text-center">99999</h1>
             </div>
             <div class="panel-body text-center">
-                <strong>Reserved :)</strong>
+                <strong>Reserved ;)</strong>
             </div>
         </div>
     </div>
@@ -49,6 +49,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Registration Date</th>
         </tr>
@@ -57,7 +58,8 @@
         @foreach (var account in Model.Accounts)
         {
             <tr>
-                <td>@account.Id</td>
+                <td><a href="@Url.Action("Account", "Home", new {id = account.Id})">@account.Id</a></td>
+                <td>@account.Name</td>
                 <td>@account.Email</td>
                 <td>@account.RegistrationDate</td>
             </tr>

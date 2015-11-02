@@ -36,5 +36,20 @@ namespace Presentation.Web.Controllers
 
             return View(vm);
         }
+
+        public ActionResult Account(int id)
+        {
+            var account = _queryDispatcher.Ask(new AccountByIdQuery(id));
+
+            var vm = new HomeAccountViewModel
+            {
+                Id = account.Id,
+                Name = account.Name,
+                Email = account.Email,
+                RegistrationDate = account.RegistrationDate
+            };
+            
+            return View(vm);
+        }
     }
 }
