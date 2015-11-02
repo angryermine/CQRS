@@ -58,7 +58,7 @@
         @foreach (var account in Model.Accounts)
         {
             <tr>
-                <td><a href="@Url.Action("Account", "Home", new {id = account.Id})">@account.Id</a></td>
+                <td>@account.Id</td>
                 <td>@account.Name</td>
                 <td>@account.Email</td>
                 <td>@account.RegistrationDate</td>
