@@ -40,9 +40,8 @@ namespace Domain.Entities
 
         private static string HashPassword(string password)
         {
-            var cryptoProvider = new RNGCryptoServiceProvider();
             var salt = new byte[SaltByteSize];
-            cryptoProvider.GetBytes(salt);
+            new RNGCryptoServiceProvider().GetBytes(salt);
 
             var hash = PBKDF2(password, salt, PBKDF2Iterations, HashByteSize);
             return string.Format("{0}:{1}:{2}", PBKDF2Iterations, Convert.ToBase64String(salt), Convert.ToBase64String(hash));
