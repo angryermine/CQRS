@@ -66,18 +66,16 @@ namespace Domain.Entities
 
         public virtual string GenerateNewPassword()
         {
-            const string charactersArray =
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-                "abcdefghijklmnopqrstuvwxyz" +
-                "0123456789";
+            const string charactersArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-            var bytes = new byte[GeneratedPasswordLenght*8];
+            var bytes = new byte[GeneratedPasswordLenght * 8];
             new RNGCryptoServiceProvider().GetBytes(bytes);
+
             var result = new char[GeneratedPasswordLenght];
             for (var i = 0; i < GeneratedPasswordLenght; i++)
             {
-                var value = BitConverter.ToUInt64(bytes, i*8);
-                result[i] = charactersArray[(int) (value % (uint)charactersArray.Length)];
+                var value = BitConverter.ToUInt64(bytes, i * 8);
+                result[i] = charactersArray[(int)(value % (uint)charactersArray.Length)];
             }
 
             var newPassword = new string(result);
