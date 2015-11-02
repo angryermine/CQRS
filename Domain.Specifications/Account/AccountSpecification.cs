@@ -10,6 +10,12 @@ namespace Domain.Specifications.Account
             return this;
         }
 
+        public AccountSpecification WithName(string name)
+        {
+            IncludeSpecification(new NameEqualsSpecification(name));
+            return this;
+        }
+
         public AccountSpecification WithEmail(string email)
         {
             IncludeSpecification(new EmailEqualsSpecification(email));
