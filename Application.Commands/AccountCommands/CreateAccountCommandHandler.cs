@@ -13,11 +13,11 @@ namespace Application.Commands.AccountCommands
             _uowFactory = uowFactory;
         }
 
-        public void Execute(CreateAccountCommand command)
+        public void Execute(CreateAccountCommand cmd)
         {
             using (var uow = _uowFactory.Create())
             {
-                uow.Add(new Account(command.Email, command.Password));
+                uow.Add(new Account(cmd.Name, cmd.Email, cmd.Password));
                 uow.Commit();
             }
         }
