@@ -12,6 +12,8 @@ namespace Domain.Entities
         private const int SaltIndex = 1;
         private const int PBKDF2Index = 2;
 
+        private const int GeneratedPasswordLenght = 8;
+
         protected Password()
         {
         }
@@ -60,6 +62,29 @@ namespace Domain.Entities
         {
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt) { IterationCount = iterations };
             return pbkdf2.GetBytes(outputBytes);
+        }
+
+        public virtual string GenerateNewPassword()
+        {
+            const string charactersArray =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                "abcdefghijklmnopqrstuvwxyz" +
+                "0123456789";
+
+            var bytes = new byte[GeneratedPasswordLenght*8];
+            new RNGCryptoServiceProvider().GetBytes(bytes);
+            var result = new char[GeneratedPasswordLenght];
+            for (var i = 0; i < GeneratedPasswordLenght; i++)
+            {
+                var value = BitConverter.ToUInt64(bytes, i*8);
+                result[i] = charactersArray[(int) (value % (uint)charactersArray.Length)];
+            }
+
+            var newPassword = new string(result);
+
+            Hash = HashPassword(newPassword);
+
+            return newPassword;
         }
     }
 }
