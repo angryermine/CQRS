@@ -23,7 +23,7 @@ namespace Presentation.Web.Startup
         {
             var database = MsSqlConfiguration.MsSql2008.ConnectionString(x => x.FromConnectionStringWithKey("Main"));
             var config = Fluently.Configure().Database(database)
-                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.Load("Infrastructure.NHibernate")))
+                .Mappings(x => x.FluentMappings.AddFromAssembly(Assembly.Load("Infrastructure.Persistence.NHibernate")))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 
             var container = new Container();
@@ -32,17 +32,11 @@ namespace Presentation.Web.Startup
             container.Register<IUnitOfWorkFactory, UnitOfWorkFactory>();
             container.Register<IRepository, Repository>();
 
-            var queries = OpenGenericBatchRegistrationExtensions.GetTypesToRegister(
-                container, typeof(IQuery<>),
-                AccessibilityOption.PublicTypesOnly,
-                Assembly.Load("Application.Queries"))
-                .ToList();
-
-            container.RegisterManyForOpenGeneric(typeof(IQuery<>), container.RegisterAll, queries);
-            container.RegisterManyForOpenGeneric(typeof(IQueryHandler<,>), Assembly.Load("Application.Queries"));
+            container.RegisterCollection(typeof(IQuery<>), Assembly.Load("Application.Queries"));
+            container.Register(typeof(IQueryHandler<,>), new[] { Assembly.Load("Application.Queries") });
             container.Register<IQueryDispatcher>(() => new QueryDispatcher(container.GetInstance));
 
-            container.RegisterManyForOpenGeneric(typeof(ICommandHandler<>), Assembly.Load("Application.Commands"));
+            container.Register(typeof(ICommandHandler<>), new[] { Assembly.Load("Application.Commands") });
             container.Register<ICommandDispatcher>(() => new CommandDispatcher(container.GetInstance));
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
