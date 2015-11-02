@@ -42,7 +42,6 @@
     <Compile Include="Account\NameEqualsSpecification.cs" />
     <Compile Include="Account\PasswordEqualsSpecification.cs" />
     <Compile Include="Account\RegistrationDateRange.cs" />
-    <Compile Include="FluentSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

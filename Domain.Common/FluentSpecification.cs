@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Domain.Common;
 
-namespace Domain.Specifications
+namespace Domain.Common
 {
     public abstract class FluentSpecification<TEntity> : Specification<TEntity> where TEntity : Entity
     {

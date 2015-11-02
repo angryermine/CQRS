@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Common;
 
 namespace Domain.Specifications.Account
 {
